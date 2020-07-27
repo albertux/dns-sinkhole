@@ -2,9 +2,9 @@
 
 Install unbound dns
 
-Upate the root.hints, this can be in a cron every 6 months (`0 * * */6 *`)
+Upate the root.hints, this can be in a cron every 6 months (`0 0 1 */6 *`)
 
-`wget -c http://www.internic.net/domain/named.root -O /var/lib/unbound/root.hints`
+`wget http://www.internic.net/domain/named.root -O /var/lib/unbound/root.hints`
 
 Edit the unbound.conf and adjust settings according to your needs
 

@@ -1,11 +1,11 @@
 #!/bin/bash
 
 URLS=(
-https://adaway.org/hosts.txt                                                                                                                                    
-https://urlhaus.abuse.ch/downloads/hostfile/                                                                                                                    
-https://mirror1.malwaredomains.com/files/justdomains                                                                                                            
-https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt                                                                                                      
-https://codeberg.org/spootle/blocklist/raw/branch/master/blocklist.txt                                                                                          
+https://adaway.org/hosts.txt
+https://urlhaus.abuse.ch/downloads/hostfile/
+https://mirror1.malwaredomains.com/files/justdomains
+https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
+https://codeberg.org/spootle/blocklist/raw/branch/master/blocklist.txt
 https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
 https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt
 https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt
