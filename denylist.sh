@@ -1,6 +1,7 @@
 #!/bin/bash
 
-URLS=(
+# parallel download and cleaning
+read -r -d '' URLS <<'EOF'
 https://adaway.org/hosts.txt
 https://urlhaus.abuse.ch/downloads/hostfile/
 https://mirror1.malwaredomains.com/files/justdomains
@@ -15,10 +16,9 @@ https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://phishing.army/download/phishing_army_blocklist_extended.txt
 https://pgl.yoyo.org/adservers/serverlist.php\?hostformat=hosts\&showintro=0\&mimetype=plaintext
-)
-
-( for url in ${URLS[@]}; do curl -L -s $url; done ) \
- | sed '/^s*$/d;/^\s*\#/d;/"/d;s/$\s//;s///;s/[[:blank:]]*$//;s/\(\.*\)\(#.*\)/\1/;s/\.$//' \
+EOF
+echo "$URLS" |  xargs -n 1 -P 4 wget -qO - \
+//;s/[[:blank:]]*$//;s/\(\.*\)\(#.*\)/\1/;s/\.$//' \
  | awk '{print $NF}' | tr '[:upper:]' '[:lower:]' | sort | uniq \
  | awk '{print "local-zone: \""$1"\" always_nxdomain"}' > /tmp/denylist.conf
 
