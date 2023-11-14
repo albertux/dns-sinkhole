@@ -18,7 +18,7 @@ https://phishing.army/download/phishing_army_blocklist_extended.txt
 https://pgl.yoyo.org/adservers/serverlist.php\?hostformat=hosts\&showintro=0\&mimetype=plaintext
 EOF
 echo "$URLS" |  xargs -n 1 -P 4 wget -qO - \
-//;s/[[:blank:]]*$//;s/\(\.*\)\(#.*\)/\1/;s/\.$//' \
+ | sed '/^s*$/d;/^\s*\#/d;/"/d;s/$\s//;s///;s/[[:blank:]]*$//;s/\(\.*\)\(#.*\)/\1/;s/\.$//' \
  | awk '{print $NF}' | tr '[:upper:]' '[:lower:]' | sort | uniq \
  | awk '{print "local-zone: \""$1"\" always_nxdomain"}' > /tmp/denylist.conf
 
